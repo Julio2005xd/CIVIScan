@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Base ──────────────────────────────────────────────────── */
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply font-body text-slate-800 bg-slate-50 antialiased;
+    min-height: 100dvh;
+  }
+
+  h1, h2, h3, h4, h5 {
+    @apply font-display;
+  }
+}
+
+/* ─── Leaflet overrides ──────────────────────────────────────── */
+.leaflet-container {
+  font-family: 'Figtree', sans-serif !important;
+  border-radius: 0.75rem;
+}
+
+.leaflet-popup-content-wrapper {
+  @apply rounded-xl shadow-card border border-civic-blue-100;
+  font-family: 'Figtree', sans-serif !important;
+}
+
+.leaflet-popup-tip {
+  background: white !important;
+}
+
+.civicscan-marker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ─── Utilities ──────────────────────────────────────────────── */
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, #1D4ED8 0%, #22C55E 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glass {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+  }
+
+  .glass-dark {
+    background: rgba(30, 58, 138, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+}
+
+/* ─── Page transitions ───────────────────────────────────────── */
+.page-enter {
+  animation: slideUp 0.35s ease-out forwards;
+}
+
+/* ─── Mobile bottom safe area ────────────────────────────────── */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
